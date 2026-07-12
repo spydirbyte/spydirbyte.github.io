@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2a7a5c #0d1210;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #07090a;
+  color: #e8e6dc;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #4ade9c;
+  color: #07090a;
+}
+
+/* Ambient CRT vignette + grain, fixed over everything */
+.crt-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+.grain-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 61;
+  mix-blend-mode: overlay;
+}
+
+.text-glow {
+  text-shadow: 0 0 6px rgba(74, 222, 156, 0.55), 0 0 22px rgba(74, 222, 156, 0.18);
+}
+
+.text-glow-amber {
+  text-shadow: 0 0 6px rgba(224, 164, 88, 0.5), 0 0 20px rgba(224, 164, 88, 0.15);
+}
+
+.panel-border {
+  border: 1px solid #1c2622;
+}
+
+.clip-corner {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
